@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    echo asdsadasdsa;
+    echo 'asdsadasdsa';
 });
 
 Route::get('/location', 'MainController@location');
