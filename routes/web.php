@@ -15,4 +15,7 @@ Route::get('/', function () {
     echo 'asdsadasdsa';
 });
 
-Route::get('/location', 'MainController@location');
+Route::any('/location/{longhitude}/{latitude}', 'MainController@location_data');
+Route::any('/location', 'MainController@location');
+
+Route::any('/sample_volley_request', 'MainController@sample_volley_request');
