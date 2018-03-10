@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    echo asdsadasdsa;
 });
 
-Route::any('/location', 'MainController@location');
+Route::get('/location', 'MainController@location');
