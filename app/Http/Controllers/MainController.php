@@ -73,4 +73,22 @@ class MainController extends Controller
             return 'User Already Exist';
         }
     }
+
+    function user_request()
+    {
+        $data['request_id']             = Request::input('request_id');
+        $data['id']                     = Request::input('id');
+        $data['emergency_type']         = Request::input('emergency_type');
+        $data['emergency_category']     = Request::input('emergency_category');
+        $data['location_longhitude']    = Request::input('location_longhitude');
+        $data['location_latitude']      = Request::input('location_latitude');
+        $data['office_branch']          = Request::input('office_branch');
+        $data['img_url']                = Request::input('img_url');
+        $data['img_string']             = Request::input('img_string');
+        $data['date']                   = Request::input('date');
+        $data['time']                   = Request::input('time');
+        $data['status']                 = Request::input('status');
+
+        echo date('Y-m-d') ."  ,". date('H:m:s');
+    }
 }

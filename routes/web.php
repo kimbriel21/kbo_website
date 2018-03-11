@@ -20,3 +20,5 @@ Route::any('/location', 'MainController@location');
 
 Route::any('/sample_volley_request', 'MainController@sample_volley_request');
 Route::any('/register_user', 'MainController@register_user');
+Route::any('/user_request', 'MainController@user_request');
+
