@@ -66,7 +66,7 @@ class MainController extends Controller
         else if ((!$user_exist) && (!$number)) 
         {
             $user_online_id = Tbl_User::insertGetId($data);
-            return $user_online_id;
+            return $user_online_id+"";
         }
         else
         {
