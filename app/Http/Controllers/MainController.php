@@ -13,6 +13,7 @@ use Mapper;
 use Request;
 use Carbon\Carbon;
 use Hash;
+use Image;
 
 class MainController extends Controller
 {
@@ -76,19 +77,24 @@ class MainController extends Controller
 
     function user_request()
     {
-        $data['image'] = Request::input('image');
-
         $data['id']                     = Request::input('id');
         $data['emergency_type']         = Request::input('emergency_type');
         $data['emergency_category']     = Request::input('emergency_category');
         $data['location_longhitude']    = Request::input('location_longhitude');
         $data['location_latitude']      = Request::input('location_latitude');
         $data['office_branch']          = Request::input('office_branch');
-        $data['img_url']                = public_path() . "/assets/images/" . Request::input('image_name');
+        
         $data['date']                   = date('Y-m-d');
         $data['time']                   = date('H:m:s');
         $data['status']                 = 'Pending';
 
+        // if (Request::has('image')) 
+        // {
+            $image = Request::input('image');
+            $file = base64_decode($image);
+            $data['img_url']   = public_path() . "/assets/images/" . Request::input('image_name'). ".jpg";
+             Image::make(file_get_contents($file))->save($data['img_url']);
+        // }
 
         return json_encode($data);
     }

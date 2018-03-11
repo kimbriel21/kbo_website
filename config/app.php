@@ -179,6 +179,7 @@ return [
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
         Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
         'GoogleGeocoder' => Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider::class,
         'Mapper'         => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];
