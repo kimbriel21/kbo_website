@@ -6,10 +6,13 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Controllers\Controller;
+use App\Model\Tbl_User;
 use GoogleMaps;
 use GoogleGeocoder;
 use Mapper;
 use Request;
+use Carbon\Carbon;
+use Hash;
 
 class MainController extends Controller
 {
@@ -36,5 +39,32 @@ class MainController extends Controller
     	$data['input_two'] = Request::Input('input_two');
 
     	return json_encode($data);
+    }
+
+    function register_user()
+    {
+
+    	$data['first_name']		=	Request::input('first_name');
+		$data['last_name']		=	Request::input('last_name');
+        $data['name']           =   $data['first_name'] + $data['last_name'];
+		$data['contact_number']	=	Request::input('contact_number');
+		$data['address']		=	Request::input('address');
+		$data['email']			=	Request::input('email');
+        $data["password"]       =   Hash::make($data['contact_number']);
+        $data['created_at']     =   Carbon::now();
+
+
+        $user_exist = Tbl_User::where('first_name',$data['first_name'])->where('last_name',$data['last_name'])->where('contact_number',$data['contact_number'])->first();
+		$number = Tbl_User::where('contact_number',$data['contact_number'])->first();
+        
+        if ((!$user_exist) && (!$number)) 
+        {
+            Tbl_User::Insert($data);
+            return 'success';
+        }
+        else
+        {
+            return 'User Already Exist';
+        }
     }
 }

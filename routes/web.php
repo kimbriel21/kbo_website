@@ -19,3 +19,4 @@ Route::any('/location/{longhitude}/{latitude}', 'MainController@location_data');
 Route::any('/location', 'MainController@location');
 
 Route::any('/sample_volley_request', 'MainController@sample_volley_request');
+Route::any('/register_user', 'MainController@register_user');
