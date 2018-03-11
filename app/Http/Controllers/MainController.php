@@ -56,11 +56,17 @@ class MainController extends Controller
 
         $user_exist = Tbl_User::where('first_name',$data['first_name'])->where('last_name',$data['last_name'])->where('contact_number',$data['contact_number'])->first();
 		$number = Tbl_User::where('contact_number',$data['contact_number'])->first();
+        $email = Tbl_User::where('email',$data['email'])->first();
         
-        if ((!$user_exist) && (!$number)) 
+        if ($email) 
         {
-            Tbl_User::Insert($data);
-            return 'success';
+            return 'Email Already Exist';
+        }
+
+        else if ((!$user_exist) && (!$number)) 
+        {
+            $user_online_id = Tbl_User::insertGetId($data);
+            return $user_online_id;
         }
         else
         {
