@@ -48,7 +48,7 @@ class MainController extends Controller
 
     	$data['first_name']		=	Request::input('first_name');
 		$data['last_name']		=	Request::input('last_name');
-        $data['name']           =   $data['first_name'] + $data['last_name'];
+        $data['name']           =   Request::input('first_name') + Request::input('last_name');
 		$data['contact_number']	=	Request::input('contact_number');
 		$data['address']		=	Request::input('address');
 		$data['email']			=	Request::input('email');
@@ -101,5 +101,14 @@ class MainController extends Controller
 
         return 'success';
 
+    }
+
+    function view_image()
+    {
+        $data['id']  = Request::input('id');
+        $img_url = "/var/www/html/kbo_website/public/assets/images/20180312_212319a.jpg";
+        $data['img_url'] = str_replace('/var/www/html/kbo_website/public', '', $img_url);
+        
+        return view('view_image',$data);
     }
 }
