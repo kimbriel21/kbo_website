@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Controllers\Controller;
 use App\Model\Tbl_User;
+use App\Model\Tbl_Request;
 use GoogleMaps;
 use GoogleGeocoder;
 use Mapper;
@@ -83,15 +84,8 @@ class MainController extends Controller
         $data['location_longhitude']    = Request::input('location_longhitude');
         $data['location_latitude']      = Request::input('location_latitude');
         $data['office_branch']          = Request::input('office_branch');
-        
-        $data['date']                   = date('Y-m-d');
-        $data['time']                   = date('H:m:s');
+        $data['date_requested']         = Carbon::now();
         $data['status']                 = 'Pending';
-
-
-        // $data['image'] = Request::input('image');
-        // $data['path']  = public_path().'/assets/images/'.Request::input('image_name').'a.jpg';
-        // $data['image_name'] = Request::input('image_name');
 
         if(Request::has('image')) 
         {
@@ -103,7 +97,9 @@ class MainController extends Controller
             Image::make($file)->save($path);
         }
 
-        return json_encode($data);
+        Tbl_Request::insert($data);
+
+        return 'success';
 
     }
 }

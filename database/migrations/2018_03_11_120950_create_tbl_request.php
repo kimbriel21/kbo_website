@@ -22,10 +22,8 @@ class CreateTblRequest extends Migration
             $table->string('location_longhitude');
             $table->string('location_latitude');
             $table->string('office_branch');
-            $table->string('img_url');
-            $table->string('img_string');
-            $table->string('date');
-            $table->string('time');
+            $table->string('img_url')->nullable();
+            $table->timestamp('date_requested')->nullable();
             $table->string('status');
         });
     }
