@@ -88,13 +88,17 @@ class MainController extends Controller
         $data['time']                   = date('H:m:s');
         $data['status']                 = 'Pending';
 
+
+        $data['image'] = Request::input('image');
+        $data['path']  = public_path('assets/images/' . $png_url);
+        $data['image_name'] = Request::input('image_name');
         if(Request::has('image')) 
         {
             $image = Request::input('image');
             $file = base64_decode($image);
             $path = public_path('assets/images/' . $png_url);
             // $data['img_url']   = public_path() . "/assets/images/" . Request::input('image_name'). ".jpg";
-             Image::make($file)->save($path);
+             // Image::make($file)->save($path);
         }
 
         return json_encode($data);
