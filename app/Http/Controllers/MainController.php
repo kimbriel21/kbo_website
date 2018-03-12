@@ -93,11 +93,11 @@ class MainController extends Controller
         // $data['path']  = public_path('assets/images/' .Request::input('image_name'). ".jpg");
         // $data['image_name'] = Request::input('image_name');
         // if(Request::has('image')) 
-        // {
+        // // {
             $image = Request::input('image');
             $file = base64_decode($image);
-            $path = public_path('assets/images/' .Request::input('image_name'). ".jpg");
-            // $data['img_url']   = public_path() . "/assets/images/" . Request::input('image_name'). ".jpg";
+            $path = public_path().'/assets/images/'.Request::input('image_name').'a.jpg';
+            $data['img_url']   = $path;
             Image::make($file)->save($path);
         // }
 
