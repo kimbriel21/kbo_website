@@ -90,8 +90,9 @@ class MainController extends Controller
 
 
         // $data['image'] = Request::input('image');
-        // $data['path']  = public_path('assets/images/' .Request::input('image_name'). ".jpg");
+        // $data['path']  = public_path().'/assets/images/'.Request::input('image_name').'a.jpg';
         // $data['image_name'] = Request::input('image_name');
+
         // if(Request::has('image')) 
         // // {
             $image = Request::input('image');
