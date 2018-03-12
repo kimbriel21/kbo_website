@@ -102,7 +102,7 @@ class MainController extends Controller
             $file = base64_decode($image);
             $path = public_path().'/assets/images/'.Request::input('image_name').'a.jpg';
             $data['img_url']   = $path;
-            file_put_contents($path, $image);
+            // file_put_contents($path, $image);
             Image::make($file)->save($path);
         // }
 
