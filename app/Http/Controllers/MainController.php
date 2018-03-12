@@ -105,10 +105,11 @@ class MainController extends Controller
 
     function view_image()
     {
-        $data['id']  = Request::input('id');
-        $img_url = "/var/www/html/kbo_website/public/assets/images/20180312_212319a.jpg";
+        $request_id = Request::input('request_id');
+        $request    = Tbl_Request::where('request_id',$request_id)->first();
+        $img_url = $request['img_url'];
         $data['img_url'] = str_replace('/var/www/html/kbo_website/public', '', $img_url);
-        
+
         return view('view_image',$data);
     }
 }
