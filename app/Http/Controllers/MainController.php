@@ -105,11 +105,21 @@ class MainController extends Controller
 
     function view_image()
     {
-        $request_id = Request::input('request_id');
-        $request    = Tbl_Request::where('request_id',$request_id)->first();
-        $img_url = $request['img_url'];
+        $request_id      = Request::input('request_id');
+        $request         = Tbl_Request::where('request_id',$request_id)->first();
+        $img_url         = $request['img_url'];
         $data['img_url'] = str_replace('/var/www/html/kbo_website/public', '', $img_url);
 
         return view('view_image',$data);
+    }
+
+
+    function select_data_request()
+    {
+        $office_branch        =    Request::input('office_branch');
+        // $data["_request"]     =    Tbl_Request::where('office_branch',$office_branch)->get();
+        $data["_request"]     =    Tbl_Request::select('request_id','location_longhitude','location_latitude','office_branch','emergency_type','emergency_category','date_requested','status','first_name','last_name','contact_number','address')->join('users', 'users.id', '=', 'tbl_request.id')->get();
+       
+        return json_encode($data["_request"]);
     }
 }
