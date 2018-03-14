@@ -23,3 +23,4 @@ Route::any('/register_user', 'MainController@register_user');
 Route::any('/user_request', 'MainController@user_request');
 Route::any('/view_image', 'MainController@view_image');
 Route::any('/select_data_request', 'MainController@select_data_request');
+Route::any('/action_request', 'MainController@action_request');

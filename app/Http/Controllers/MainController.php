@@ -15,6 +15,7 @@ use Request;
 use Carbon\Carbon;
 use Hash;
 use Image;
+use Crypt;
 
 class MainController extends Controller
 {
@@ -131,5 +132,16 @@ class MainController extends Controller
         $data["_request"]     =    Tbl_Request::select('request_id','location_longhitude','location_latitude','office_branch','emergency_type','emergency_category','date_requested','status','first_name','last_name','contact_number','address','email')->joinUsers()->get();
        
         return json_encode($data["_request"]);
+    }
+
+
+    function action_request()
+    {
+        $request_id                 =    Request::input('request_id');
+        $update['status']           =    Request::input('action_request');
+
+        Tbl_Request::where('request_id', $request_id)->update($update);
+       
+        return 'success';
     }
 }
