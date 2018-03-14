@@ -106,7 +106,7 @@ class MainController extends Controller
 
     function view_image()
     {
-        $request_id      = "2";
+        $request_id      = Request::input('request_id');
         $request         = Tbl_Request::where('request_id',$request_id)->first();
 
         if ($request['img_url'] != "" || $request['img_url'] != null) 
