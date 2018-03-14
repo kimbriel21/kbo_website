@@ -106,10 +106,19 @@ class MainController extends Controller
 
     function view_image()
     {
-        $request_id      = Request::input('request_id');
+        $request_id      = "2";
         $request         = Tbl_Request::where('request_id',$request_id)->first();
-        $img_url         = $request['img_url'];
-        $data['img_url'] = str_replace('/var/www/html/kbo_website/public', '', $img_url);
+
+        if ($request['img_url'] != "" || $request['img_url'] != null) 
+        {
+            $img_url         = $request['img_url'];
+            $data['img_url'] = str_replace('/var/www/html/kbo_website/public', '', $img_url);
+        }
+        else
+        {
+            $data['img_url'] = "/assets/images/no_image.jpg";
+        }
+        
 
         return view('view_image',$data);
     }
