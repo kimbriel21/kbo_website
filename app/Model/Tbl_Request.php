@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
@@ -10,8 +9,8 @@ class Tbl_Request extends Model
 	protected $primaryKey = "request_id";
 	public $timestamps = false;
 
-	public static function joinUser($query)
+	public static function scopejoinUsers($query)
 	{
-		return $query->join('user', 'user.id', '=', 'tbl_request.id');
+		return $query->leftjoin('users', 'users.id', '=', 'tbl_request.id');
 	}
 }

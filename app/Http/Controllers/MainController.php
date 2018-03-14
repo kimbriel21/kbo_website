@@ -21,7 +21,8 @@ class MainController extends Controller
     function location()
     {
         Mapper::map(14.8621226, 120.9515384, ['zoom' => 15, 'markers' => ['title' => 'My Location', 'animation' => 'DROP'], 'clusters' => ['size' => 10, 'center' => true, 'zoom' => 20]] );
-    	return view('google_map');
+    	
+        return view('google_map');
     }
 
     function location_data($longhitude, $latitude)
@@ -116,9 +117,9 @@ class MainController extends Controller
 
     function select_data_request()
     {
+        $request_id           =    Request::input('request_id');
         $office_branch        =    Request::input('office_branch');
-        // $data["_request"]     =    Tbl_Request::where('office_branch',$office_branch)->get();
-        $data["_request"]     =    Tbl_Request::select('request_id','location_longhitude','location_latitude','office_branch','emergency_type','emergency_category','date_requested','status','first_name','last_name','contact_number','address')->join('users', 'users.id', '=', 'tbl_request.id')->get();
+        $data["_request"]     =    Tbl_Request::select('request_id','location_longhitude','location_latitude','office_branch','emergency_type','emergency_category','date_requested','status','first_name','last_name','contact_number','address','email')->joinUsers()->get();
        
         return json_encode($data["_request"]);
     }
