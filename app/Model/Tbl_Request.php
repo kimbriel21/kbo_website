@@ -9,8 +9,10 @@ class Tbl_Request extends Model
 	protected $primaryKey = "request_id";
 	public $timestamps = false;
 
-	public static function scopejoinUsers($query)
+	public static function scopejoinUsers($query,$params)
 	{
+		$query->select('request_id','location_longhitude','location_latitude','office_branch','emergency_type','emergency_category','date_requested','status','first_name','last_name','contact_number','address','email');
+		
 		return $query->leftjoin('users', 'users.id', '=', 'tbl_request.id');
 	}
 }

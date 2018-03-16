@@ -22,7 +22,6 @@ class MainController extends Controller
     function location()
     {
         Mapper::map(14.8621226, 120.9515384, ['zoom' => 15, 'markers' => ['title' => 'My Location', 'animation' => 'DROP'], 'clusters' => ['size' => 10, 'center' => true, 'zoom' => 20]] );
-    	
         return view('google_map');
     }
 
@@ -66,7 +65,6 @@ class MainController extends Controller
         {
             return 'Email Already Exist';
         }
-
         else if ((!$user_exist) && (!$number)) 
         {
             $user_online_id = Tbl_User::insertGetId($data);
@@ -119,7 +117,6 @@ class MainController extends Controller
         {
             $data['img_url'] = "/assets/images/no_image.jpg";
         }
-        
 
         return view('view_image',$data);
     }
@@ -127,10 +124,12 @@ class MainController extends Controller
 
     function select_data_request()
     {
-        $request_id           =    Request::input('request_id');
-        $office_branch        =    Request::input('office_branch');
-        $data["_request"]     =    Tbl_Request::select('request_id','location_longhitude','location_latitude','office_branch','emergency_type','emergency_category','date_requested','status','first_name','last_name','contact_number','address','email')->joinUsers()->get();
-       
+        $params['request_id']           =    Request::input('request_id');
+        $params['office_branch']        =    Request::input('office_branch');
+        $params['emergency_type']       =    Request::input("emergency_type");
+        $params['request_date']         =    Request::input("request_date");
+        $data["_request"]               =    Tbl_Request::joinUsers($params)->get();
+        
         return json_encode($data["_request"]);
     }
 
@@ -139,9 +138,8 @@ class MainController extends Controller
     {
         $request_id                 =    Request::input('request_id');
         $update['status']           =    Request::input('action_request');
-
         Tbl_Request::where('request_id', $request_id)->update($update);
-       
+        
         return 'success';
     }
 }
