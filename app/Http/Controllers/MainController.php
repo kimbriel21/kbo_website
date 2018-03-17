@@ -128,6 +128,7 @@ class MainController extends Controller
         $params['office_branch']        =    Request::input('office_branch');
         $params['emergency_type']       =    Request::input("emergency_type");
         $params['request_date']         =    Request::input("request_date");
+        $params['status']               =    Request::input("status");
         $data["_request"]               =    Tbl_Request::joinUsers($params)->get();
         
         return json_encode($data["_request"]);
