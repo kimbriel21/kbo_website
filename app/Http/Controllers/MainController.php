@@ -22,6 +22,8 @@ class MainController extends Controller
     function location()
     {
         Mapper::map(14.8621226, 120.9515384, ['zoom' => 15, 'markers' => ['title' => 'My Location', 'animation' => 'DROP'], 'clusters' => ['size' => 10, 'center' => true, 'zoom' => 20]] );
+        $param = array("latlng"=>"14.8621226, 120.9515384");
+        $response = \Geocoder::geocode('json', $param); //for exact name of location
         return view('google_map');
     }
 

@@ -231,7 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
         'GoogleGeocoder' => Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider::class,
-        'Mapper'         => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'Mapper'=> Cornford\Googlmapper\Facades\MapperFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
     ],
 

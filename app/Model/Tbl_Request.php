@@ -21,6 +21,20 @@ class Tbl_Request extends Model
 			$query->where('emergency_type',$params['emergency_type']);
 		}
 
+		if ($params['request_date'] != "" || $params['request_date'] != null) {
+			$query->whereDate('date_requested',$params['request_date']);
+		}
+
+		if ($params['status'] != "" || $params['status'] != null) 
+		{
+			$query->where('status',$params['status']);
+		}
+
+		if ($params['office_branch'] != "" || $params['office_branch'] != null) 
+		{
+			$query->where('office_branch',$params['office_branch']);
+		}
+		
 		return $query;
 	}
 }
