@@ -151,10 +151,20 @@ class MainController extends Controller
         $number_from    = Request::input('number_from');
         $text           = Request::input('text');
 
-        Nexmo::message()->send([
-            'to'   => $number_to,
-            'from' => $number_from,
-            'text' => $text
-        ]);
+
+        if (substr($number_to, 0,2) == "09") 
+        {
+            $number_to = "63".substr($number_to, 1,strlen($number_to));
+        }
+
+        if (substr($number_from, 0,2) == "09") 
+        {
+            $number_from = "63".substr($number_from, 1,strlen($number_from));
+        }
+        // Nexmo::message()->send([
+        //     'to'   => $number_to,
+        //     'from' => $number_from,
+        //     'text' => $text
+        // ]);
     }
 }
