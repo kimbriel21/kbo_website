@@ -165,5 +165,7 @@ class MainController extends Controller
             'from' => $number_from,
             'text' => $text
         ]);
+
+        return 'success';
     }
 }
