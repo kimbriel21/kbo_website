@@ -161,10 +161,10 @@ class MainController extends Controller
         {
             $number_from = "63".substr($number_from, 1,strlen($number_from));
         }
-        // Nexmo::message()->send([
-        //     'to'   => $number_to,
-        //     'from' => $number_from,
-        //     'text' => $text
-        // ]);
+        Nexmo::message()->send([
+            'to'   => $number_to,
+            'from' => $number_from,
+            'text' => $text
+        ]);
     }
 }
