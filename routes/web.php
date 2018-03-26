@@ -25,3 +25,6 @@ Route::any('/view_image', 'MainController@view_image');
 Route::any('/select_data_request', 'MainController@select_data_request');
 Route::any('/action_request', 'MainController@action_request');
 
+Route::any('/send_message', 'MainController@send_message');
+
+

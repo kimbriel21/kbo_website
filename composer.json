@@ -6,15 +6,14 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "fideloper/proxy": "~3.3",
-        "laravel/framework": "5.5.*",
-        "alexpechkarev/google-maps":"1.0.9",
-        "laravel/tinker": "~1.0",
         "alexpechkarev/google-geocoder": "dev-master",
+        "alexpechkarev/google-maps": "1.0.9",
         "cornford/googlmapper": "2.*",
-        "intervention/image": "dev-master"
-
-
+        "fideloper/proxy": "~3.3",
+        "intervention/image": "dev-master",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0",
+        "nexmo/laravel": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

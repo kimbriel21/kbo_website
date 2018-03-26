@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -180,6 +181,7 @@ return [
         Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
 
     ],
 
@@ -233,6 +235,8 @@ return [
         'GoogleGeocoder' => Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider::class,
         'Mapper'=> Cornford\Googlmapper\Facades\MapperFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
+        
     ],
 
 ];

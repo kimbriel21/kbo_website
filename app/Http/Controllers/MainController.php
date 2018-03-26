@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Hash;
 use Image;
 use Crypt;
+use Nexmo;
 
 class MainController extends Controller
 {
@@ -102,7 +103,6 @@ class MainController extends Controller
         Tbl_Request::insert($data);
 
         return 'success';
-
     }
 
     function view_image()
@@ -123,19 +123,18 @@ class MainController extends Controller
         return view('view_image',$data);
     }
 
-
     function select_data_request()
     {
         $params['request_id']           =    Request::input('request_id');
         $params['office_branch']        =    Request::input('office_branch');
         $params['emergency_type']       =    Request::input("emergency_type");
-        $params['request_date']         =    Request::input("request_date");
+        $params['request_date_from']    =    Request::input("request_date");
+
         $params['status']               =    Request::input("status");
         $data["_request"]               =    Tbl_Request::joinUsers($params)->get();
         
         return json_encode($data["_request"]);
     }
-
 
     function action_request()
     {
@@ -144,5 +143,18 @@ class MainController extends Controller
         Tbl_Request::where('request_id', $request_id)->update($update);
         
         return 'success';
+    }
+
+    function send_message()
+    {
+        $number_to      = Request::input('number_to');
+        $number_from    = Request::input('number_from');
+        $text           = Request::input('text');
+
+        Nexmo::message()->send([
+            'to'   => $number_to,
+            'from' => $number_from,
+            'text' => $text
+        ]);
     }
 }

@@ -14,7 +14,7 @@ class Tbl_Request extends Model
 
 		$query->select('request_id','location_longhitude','location_latitude','office_branch','emergency_type','emergency_category','date_requested','status','first_name','last_name','contact_number','address','email');
 		
-		 $query->leftjoin('users', 'users.id', '=', 'tbl_request.id');
+		$query->leftjoin('users', 'users.id', '=', 'tbl_request.id');
 
 		if ($params['emergency_type'] != "" || $params['emergency_type'] != null) 
 		{
@@ -34,7 +34,7 @@ class Tbl_Request extends Model
 		{
 			$query->where('office_branch',$params['office_branch']);
 		}
-		
+
 		return $query;
 	}
 }
