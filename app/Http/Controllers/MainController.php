@@ -68,6 +68,10 @@ class MainController extends Controller
         {
             return 'Email Already Exist';
         }
+        else if($number)
+        {
+             return 'Number Already Exist';
+        }
         else if ((!$user_exist) && (!$number)) 
         {
             $user_online_id = Tbl_User::insertGetId($data);
@@ -75,7 +79,7 @@ class MainController extends Controller
         }
         else
         {
-            return 'User Already Exist';
+            return 'Number Already Exist';
         }
     }
 
