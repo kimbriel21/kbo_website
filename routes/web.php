@@ -54,3 +54,6 @@ Route::any('/send_message', 'MainController@send_message');
 
 
 
+
+Route::any('/mobile_login', 'MainController@mobile_login');
+

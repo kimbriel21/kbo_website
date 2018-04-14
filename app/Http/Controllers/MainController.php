@@ -259,6 +259,25 @@ class MainController extends Controller
         return 'success';
     }
 
+    function mobile_login()
+    {
+        $email           = Request::input('email');
+        $password           = Request::input('password');
+        $update['online']   = 0;
+
+        $user = Tbl_User::where('email',$email)->where('password',$password)->first();
+        
+        if ($user) 
+        {
+             return json_encode($user);
+        }
+        else
+        {
+             return 'failed';
+        }
+       
+    }
+
 
 
 }
