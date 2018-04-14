@@ -46,6 +46,7 @@ Route::any('/action_request', 'MainController@action_request');
 Route::any('/register_request', 'MainController@register_request');
 Route::any('/login_request', 'MainController@login_request');
 Route::any('/login_data_request', 'MainController@login_data_request');
+Route::any('/logout_request', 'MainController@logout_request');
 
 
 
