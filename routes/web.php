@@ -11,9 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    echo 'asdsadasdsa';
-});
+
+
+
+Route::any('/login','Login@login');
+Route::any('/register','Register@register');
+Route::any('/logout', 'ServerController@logout');
+
+
+Route::any('/dashboard', 'ServerController@index');
+
+
+Route::any('/verification', 'ServerController@verification');
+Route::any('/create_new_verification', 'ServerController@create_new_verification');
+
+
+
+
+Route::any('/reports', 'ServerController@reports');
+
+
+
 
 Route::any('/location/{longhitude}/{latitude}', 'MainController@location_data');
 Route::any('/location', 'MainController@location');
@@ -26,5 +44,6 @@ Route::any('/select_data_request', 'MainController@select_data_request');
 Route::any('/action_request', 'MainController@action_request');
 
 Route::any('/send_message', 'MainController@send_message');
+
 
 
