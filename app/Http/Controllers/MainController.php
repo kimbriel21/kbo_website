@@ -176,14 +176,14 @@ class MainController extends Controller
         return 'success';
     }
 
-    funcion register_request()
+    function register_request()
     {
 
-        $user_name          = Request::input('username');
+        $username           = Request::input('username');
         $password           = Request::input('password');
         $verification_code  = Request::input('verification_code');
-
-        $request = Tbl_register_verification::where('register_verification_id',$verification_code)->first();
+       
+        $request = Tbl_register_verification::where('verification_code',$verification_code)->first();
 
         if (!$request)
         {
@@ -195,8 +195,66 @@ class MainController extends Controller
         }
         else
         {
+            $insert['register_verification_id']     = $request['register_verification_id'];
+            $insert['username']                     = $username;
+            $insert['password']                     = $password;
+            $software_user = Tbl_software_user::where('username',$username)->first();
+            if ($software_user) 
+            {
+                return 'Username already taken.';
+            }
+            else
+            {
+                Tbl_software_user::insert($insert);
+
+                $update['used'] = 1;
+                $request = Tbl_register_verification::where('register_verification_id',$request['register_verification_id'])->update($update);
+
+                return 'success';
+            }
             
-            return 'registration success';
         }
     }
+
+    function login_request()
+    {
+        $username           = Request::input('username');
+        $password           = Request::input('password');
+
+        $software_user = Tbl_software_user::where('username',$username)->where('password',$password)->first();
+
+        if ($software_user) 
+        {
+            return 'success';
+        }
+        else
+        {
+            return 'Wrong username or password.';
+        }
+    }
+
+    function login_data_request()
+    {
+        $username           = Request::input('username');
+        $password           = Request::input('password');
+        $update['online']   = 1;
+        Tbl_software_user::where('username',$username)->where('password',$password)->update($update);
+        $software_user = Tbl_software_user::JoinVerification()->where('username',$username)->where('password',$password)->first();
+
+        return json_encode($software_user);
+    }
+
+    function logout_request()
+    {
+        $username           = Request::input('username');
+        $password           = Request::input('password');
+        $update['online']   = 0;
+        
+        Tbl_software_user::where('username',$username)->where('password',$password)->update($update);
+
+        return 'success';
+    }
+
+
+
 }

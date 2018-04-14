@@ -25,7 +25,7 @@
 	  		      <th scope="col">Station</th>
 	  		      <th scope="col">Station Branch</th>
 	  		      <th scope="col">Verification Code</th>
-	  		     
+	  		      <th scope="col">Used</th>
 	  		    </tr>
 	  		  </thead>
 	  		  <tbody>
@@ -35,7 +35,7 @@
 	  		      <td>{{$verification_data->station_type}}</td>
 	  		      <td>{{$verification_data->station_branch}}</td>
 	  		      <td>{{$verification_data->verification_code}}</td>
-
+				  <td>{{$verification_data->used == 1 ? 'yes':'no'}}</td>
 	  		    </tr>
 	  		    @endforeach
 	  		  </tbody>
