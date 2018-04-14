@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Controllers\Controller;
 use App\Model\Tbl_User;
 use App\Model\Tbl_Request;
+use App\Model\Tbl_server_user;
+use App\Model\Tbl_software_user;
+use App\Model\Tbl_register_verification;
 use GoogleMaps;
 use GoogleGeocoder;
 use Mapper;
@@ -171,5 +174,29 @@ class MainController extends Controller
         ]);
 
         return 'success';
+    }
+
+    funcion register_request()
+    {
+
+        $user_name          = Request::input('username');
+        $password           = Request::input('password');
+        $verification_code  = Request::input('verification_code');
+
+        $request = Tbl_register_verification::where('register_verification_id',$verification_code)->first();
+
+        if (!$request)
+        {
+            return 'Wrong Verification Code';
+        }
+        else if ($request['used'] == '1') 
+        {
+           return 'Already used verification code please request again.';
+        }
+        else
+        {
+            
+            return 'registration success';
+        }
     }
 }

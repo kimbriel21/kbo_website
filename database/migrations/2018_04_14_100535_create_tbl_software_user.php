@@ -18,8 +18,7 @@ class CreateTblSoftwareUser extends Migration
             $table->increments('software_user_id');
             $table->unsignedInteger('register_verification_id');
             $table->foreign('register_verification_id')->references('register_verification_id')->on('tbl_register_verification')->onDelete('cascade');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('username');
             $table->string('password');
             $table->tinyInteger('online')->default(0);
         });
