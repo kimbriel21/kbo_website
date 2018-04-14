@@ -223,13 +223,17 @@ class MainController extends Controller
 
         $software_user = Tbl_software_user::where('username',$username)->where('password',$password)->first();
 
-        if ($software_user) 
+        if (!$software_user) 
         {
-            return 'success';
+            return 'Wrong username or password.';
+        }
+        else if($software_user["online"] == 1)
+        {
+            return "account already login";
         }
         else
         {
-            return 'Wrong username or password.';
+            return 'success';
         }
     }
 
@@ -249,7 +253,7 @@ class MainController extends Controller
         $username           = Request::input('username');
         $password           = Request::input('password');
         $update['online']   = 0;
-        
+
         Tbl_software_user::where('username',$username)->where('password',$password)->update($update);
 
         return 'success';
