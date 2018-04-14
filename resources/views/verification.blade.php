@@ -116,12 +116,13 @@
 
 	function change_station(station)
 	{
+		$('.station_branch').html('');
 		    if(station == "Fire")
 		    {
 		        str_option = '<option selected>Choose...</option><option value="Malolos City Fire Station">Malolos City Fire Statione</option><option value="Bulacan Fire Station">Bulacan Fire Station</option><option value="Panasahan Fire Sub-Station">Panasahan Fire Sub-Station</option>';
 		    }
 		        
-		    if(station == "Mospital")
+		    if(station == "Hospital")
 		    {
 		        str_option = '<option selected>Choose...</option><option value="Santissima Trinidad Hospital">Santissima Trinidad Hospital</option><option value="Sacred Heart Hospital-Bulacan">Sacred Heart Hospital-Bulacan</option><option value="Malolos Maternity Hospital">Malolos Maternity Hospital</option><option value="Santos General Hospital">Santos General Hospital</option><option value="Mary Immaculate Maternity Hospital">Mary Immaculate Maternity Hospital</option>';
 		    }
