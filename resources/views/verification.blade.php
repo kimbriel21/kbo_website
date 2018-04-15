@@ -134,7 +134,7 @@
 		        
 		    if(station == "Rescue")
 		    {
-		        str_option = '<option selected>Choose...</option><option value="PDRRMC Station">PDRRMC Malolos</option>';
+		        str_option = '<option selected>Choose...</option><option value="PDRRMC Malolos">PDRRMC Malolos</option>';
 		    }
 		        
 		
