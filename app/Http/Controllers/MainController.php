@@ -265,9 +265,9 @@ class MainController extends Controller
         $password           = Request::input('password');
         $update['online']   = 0;
 
-        $user = Tbl_User::where('email',$email)->where('password',$password)->first();
-        
-        if ($user) 
+        $user = Tbl_User::where('email',$email)->first();
+
+        if (Hash::check(Request::Input('password'), $user['password'])) 
         {
              return json_encode($user);
         }
