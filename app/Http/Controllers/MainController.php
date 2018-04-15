@@ -59,7 +59,7 @@ class MainController extends Controller
 		$data['contact_number']	=	Request::input('contact_number');
 		$data['address']		=	Request::input('address');
 		$data['email']			=	Request::input('email');
-        $data["password"]       =   Hash::make($data['contact_number']);
+        $data["password"]       =   Hash::make(Request::input('password'));
         $data['created_at']     =   Carbon::now();
 
 
