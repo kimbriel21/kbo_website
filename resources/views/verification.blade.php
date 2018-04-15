@@ -124,7 +124,7 @@
 		        
 		    if(station == "Medical")
 		    {
-		        str_option = '<option selected>Choose...</option><option value="Santissima Trinidad Hospital">Santissima Trinidad Hospital</option><option value="Sacred Heart Hospital-Bulacan">Sacred Heart Hospital-Bulacan</option><option value="Malolos Maternity Hospital">Malolos Maternity Hospital</option><option value="Santos General Hospital">Santos General Hospital</option><option value="Mary Immaculate Maternity Hospital">Mary Immaculate Maternity Hospital</option>';
+		        str_option = '<option selected>Choose...</option><option value="Santissima Trinidad Hospital">Santissima Trinidad Hospital</option><option value="Sacred Heart Hospital-Bulacan">Sacred Heart Hospital-Bulacan</option><option value="Malolos Maternity Hospital And Eye Center">Malolos Maternity Hospital And Eye Center</option><option value="Santos General Hospital">Santos General Hospital</option><option value="Mary Immaculate Maternity Hospital">Mary Immaculate Maternity Hospital</option>';
 		    }
 		        
 		    if(station == "Police")
