@@ -19,7 +19,7 @@
       <title>Malolos Emergency Server | Dashboard</title>
   </head>
     
-  <body style="background-color: #4F535C;">
+  <body style="background-color: #4F535C;" >
     <header class="header-container">
       <nav class="navbar navbar-expand-lg navbar-dark navScroll" >
         <a class="navbar-brand" href="#">Malolos Emergency Application</a>

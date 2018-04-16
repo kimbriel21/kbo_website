@@ -7,9 +7,9 @@
 <div class="d-flex flex-column align-items-center justify-content-center" style="background-color: #4F535C; height: 100vh;">
 
 	<div class="login-form card" >
-		<!-- <div class="d-flex pb-3 align-items-center justify-content-center">
-			<img src="/assets/imgs/logo.png" width="100">
-		</div> -->
+		<div class="d-flex pb-3 align-items-center justify-content-center">
+			<img src="/images/app_logo.png" width="200">
+		</div>
 		
 		<h4 class="text-center">Login Form</h3>
 		<h5 class="text-center" style="color: #8892AD;">Fill out form below to login</h4>
